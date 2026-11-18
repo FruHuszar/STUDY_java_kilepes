@@ -20,6 +20,9 @@ public class KilepesProgram extends javax.swing.JFrame {
     private void initComponents() {
 
         btnKilepes = new javax.swing.JButton();
+        lblKijeloles = new javax.swing.JLabel();
+        checkKijeloles = new javax.swing.JCheckBox();
+        btnCheck = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -35,21 +38,47 @@ public class KilepesProgram extends javax.swing.JFrame {
             }
         });
 
+        lblKijeloles.setText("Nincs kijelölve");
+
+        checkKijeloles.setText("Kijelölés");
+        checkKijeloles.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                checkKijelolesMouseClicked(evt);
+            }
+        });
+
+        btnCheck.setText("Check");
+        btnCheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCheckActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(160, 160, 160)
-                .addComponent(btnKilepes)
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addGap(164, 164, 164)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCheck)
+                    .addComponent(checkKijeloles)
+                    .addComponent(lblKijeloles)
+                    .addComponent(btnKilepes))
+                .addContainerGap(160, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(133, 133, 133)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(69, Short.MAX_VALUE)
+                .addComponent(lblKijeloles)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(checkKijeloles)
+                .addGap(25, 25, 25)
+                .addComponent(btnCheck)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnKilepes)
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addGap(112, 112, 112))
         );
 
         pack();
@@ -62,6 +91,14 @@ public class KilepesProgram extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         megerosites();
     }//GEN-LAST:event_formWindowClosing
+
+    private void checkKijelolesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkKijelolesMouseClicked
+        //lblKijeloles.setText("Kijelölve");
+    }//GEN-LAST:event_checkKijelolesMouseClicked
+
+    private void btnCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckActionPerformed
+        ellenorzesEsLabelSzoveg();
+    }//GEN-LAST:event_btnCheckActionPerformed
 
     private void megerosites() {
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); // alapból ne csináljon semmit
@@ -76,6 +113,14 @@ public class KilepesProgram extends javax.swing.JFrame {
         if (valasz == JOptionPane.YES_OPTION) {
             dispose(); //tells Java to immediately free up those native screen resources and hide the window. If your application has multiple windows open, calling dispose() on one window just closes that specific window while the rest of the application keeps running. It only terminates the app if it was the last visible window and there are no active non-daemon threads keeping the Java Virtual Machine (JVM) alive.
             System.exit(0); //ez a kilépés maga, (nothing to do with swing) 0 = Hiba nélkül lett vége a programnak
+        }
+    }
+    
+    private void ellenorzesEsLabelSzoveg() {
+        if (checkKijeloles.isSelected()){
+            lblKijeloles.setText("Kijelölve");
+        } else {
+            lblKijeloles.setText("Nincs Kijelölve");
         }
     }
     
@@ -111,6 +156,10 @@ public class KilepesProgram extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCheck;
     private javax.swing.JButton btnKilepes;
+    private javax.swing.JCheckBox checkKijeloles;
+    private javax.swing.JLabel lblKijeloles;
     // End of variables declaration//GEN-END:variables
+
 }
