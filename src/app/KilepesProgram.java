@@ -41,6 +41,11 @@ public class KilepesProgram extends javax.swing.JFrame {
         lblKijeloles.setText("Nincs kijelölve");
 
         checkKijeloles.setText("Kijelölés");
+        checkKijeloles.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                checkKijelolesItemStateChanged(evt);
+            }
+        });
         checkKijeloles.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 checkKijelolesMouseClicked(evt);
@@ -93,12 +98,16 @@ public class KilepesProgram extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void checkKijelolesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkKijelolesMouseClicked
-        //lblKijeloles.setText("Kijelölve");
+        //ellenorzesEsLabelSzoveg();
     }//GEN-LAST:event_checkKijelolesMouseClicked
 
     private void btnCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckActionPerformed
-        ellenorzesEsLabelSzoveg();
+        checkKijeloles.setSelected(!checkKijeloles.isSelected());
     }//GEN-LAST:event_btnCheckActionPerformed
+
+    private void checkKijelolesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_checkKijelolesItemStateChanged
+        ellenorzesEsLabelSzoveg();
+    }//GEN-LAST:event_checkKijelolesItemStateChanged
 
     private void megerosites() {
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); // alapból ne csináljon semmit

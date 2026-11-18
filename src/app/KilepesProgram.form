@@ -73,6 +73,7 @@
         <Property name="text" type="java.lang.String" value="Kijel&#xf6;l&#xe9;s"/>
       </Properties>
       <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="checkKijelolesItemStateChanged"/>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="checkKijelolesMouseClicked"/>
       </Events>
     </Component>
