@@ -117,11 +117,7 @@ public class KilepesProgram extends javax.swing.JFrame {
     }
     
     private void ellenorzesEsLabelSzoveg() {
-        if (checkKijeloles.isSelected()){
-            lblKijeloles.setText("Kijelölve");
-        } else {
-            lblKijeloles.setText("Nincs Kijelölve");
-        }
+        lblKijeloles.setText(checkKijeloles.isSelected() ? "Kijelölve" : "Nincs Kijelölve");
     }
     
     public static void main(String args[]) {
