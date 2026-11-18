@@ -13,7 +13,6 @@ public class KilepesProgram extends javax.swing.JFrame {
 
     public KilepesProgram() {
         initComponents();
-        kilepesBeallitasok();
     }
 
     @SuppressWarnings("unchecked")
@@ -23,8 +22,18 @@ public class KilepesProgram extends javax.swing.JFrame {
         btnKilepes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         btnKilepes.setText("Kilépés");
+        btnKilepes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKilepesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -46,21 +55,17 @@ public class KilepesProgram extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void kilepesBeallitasok() {
-        // Saját kilépés Gomb
-        btnKilepes.addActionListener(e -> megerosites());
+    private void btnKilepesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKilepesActionPerformed
+        megerosites();
+    }//GEN-LAST:event_btnKilepesActionPerformed
 
-        // Windows X gombja
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); // alapból ne csináljon semmit
-        addWindowListener(new WindowAdapter() { // Window adapter mert a sima window listenernél 7 metódust ki kellene tölteni
-            @Override
-            public void windowClosing(WindowEvent evt) {
-                megerosites();
-            }
-        });
-    }
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        megerosites();
+    }//GEN-LAST:event_formWindowClosing
 
     private void megerosites() {
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); // alapból ne csináljon semmit
+                
         int valasz = JOptionPane.showConfirmDialog(
                 this, //ennek az elemnek a közepébe kerül
                 "Biztosan ki akarsz lépni?", //A középen megjelenő kérdés
